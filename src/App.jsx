@@ -22,7 +22,7 @@ export default function App() {
     const fetchStudents = async () => {
       setLoading(true)
       try {
-        const saved = localStorage.getItem('studentAttendance2')
+        const saved = localStorage.getItem('studentAttendance')
         if (saved) {
           setStudents(JSON.parse(saved))
           setLoading(false)
@@ -41,7 +41,7 @@ export default function App() {
             attendance: Math.floor(Math.random() * 61) + 40,
           })
         }
-        localStorage.setItem('studentAttendance2', JSON.stringify(data))
+        localStorage.setItem('studentAttendance', JSON.stringify(data))
         setStudents(data)
       } catch (err) {
         console.error('Fetch error:', err)
@@ -78,7 +78,6 @@ export default function App() {
     }
     setSelectedStudents(newSelected)
   }
-
   const toggleLowAttendance = () => setShowLowAttendance(prev => !prev)
   const toggleSort = () => setSortBy(prev => (prev === 'attendance' ? null : 'attendance'))
   const clearSelection = () => setSelectedStudents([])
